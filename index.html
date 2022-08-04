@@ -15,13 +15,76 @@
             justify-content: center;
             align-items: center;
             width: 100%;
+            flex-direction: row;
+            background:linear-gradient(rgb(226, 16, 16) 10%,white,rgba(208, 55, 55, 0.5));
             height: 100vh;
+        }
+        input{
+            width:400px;
+            height:80px;
+            border:2px solid black;
+            border-radius: 10px;
+            font-size: 44px;
+            outline: none;
+            text-align: center;
+            text-transform: capitalize;
+            background: transparent;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            box-shadow: 2px 2px 4px black;
+            transition: all .5s;
+        }
+        button{
+            width:250px;
+            height:50px;
+            margin-left: 10px;
+            border:2px solid black;
+            border-radius: 10px;
+            font-size: 22px;
+            outline: none;
+            text-transform: capitalize;
+            background: transparent;
+            color: white;
+            text-shadow: 2px 2px 4px black;
+            
+            transition: all .5s;
+        }
+        input:hover{
+            transform: skewX(-10deg);
         }
     </style>
 </head>
-<body>
+<body id="big">
     <div class="con">
-        <h2>Play the game</h2>
+        <input id="_d" onmouseleave="tranback()"  onmouseover="trans()" type="text" >
+        <button id="btn" onmouseleave="color_out()"  onclick="color_changer()">Change Background</button>
     </div>
+    <script>
+        
+        function trans()
+        {
+            var a= document.getElementById('_d');
+            a.style.transform="translateY(-3px)";
+        }
+        function tranback()
+        {
+            var a = document.getElementById('_d');
+            a.style.transform = "translateY(3px)";
+        }
+        function color_changer()
+        {
+            var a = document.getElementById('_d').value;
+            console.log(a);
+            document.getElementById('btn').style.boxShadow="2px 2px 4px black";
+            document.getElementById('btn').style.scale="1.3";
+            document.getElementById('big').style.background=a;
+            document.getElementById('_d').value="";
+        }
+        function color_out()
+        {
+            document.getElementById('btn').style.boxShadow = "2px 2px 4px white";
+            document.getElementById('btn').style.scale = "1";
+        }
+    </script>
 </body>
 </html>
